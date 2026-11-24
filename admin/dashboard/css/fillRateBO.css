@@ -1,0 +1,895 @@
+/* ============================================================
+   Fill Rate & B/O  –  scoped to .view_block_fr
+   ============================================================ */
+.view_block_fr {
+  --fr_green:   #16a34a;
+  --fr_greenbg: #dcfce7;
+  --fr_red:     #dc2626;
+  --fr_redbg:   #fee2e2;
+  --fr_amber:   #d97706;
+  --fr_amberbg: #fef3c7;
+  --fr_navy:    #1e3a5f;
+  --fr_gray:    #4b5563;
+  --fr_lgray:   #6b7280;
+  --fr_border:  #e5e7eb;
+  --fr_bg:      #f8fafc;
+  --fr_card:    #ffffff;
+  --fr_radius:  10px;
+  font-family: 'Inter','Segoe UI',sans-serif;
+  background: var(--fr_bg);
+  min-height: 100vh;
+  padding: 24px 28px;
+  box-sizing: border-box;
+}
+
+/* ── Title ──────────────────────────────────────────────────── */
+.fr_title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 10px;
+}
+
+/* ── Filters ────────────────────────────────────────────────── */
+.fr_filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.fr_filter_group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  color: var(--fr_lgray);
+  font-weight: 600;
+}
+
+.fr_filter_group select {
+  border: 1px solid var(--fr_border);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.78rem;
+  background: #fff;
+  color: #374151;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ── KPI row ────────────────────────────────────────────────── */
+.fr_kpi_row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+/* Green fill rate hero card */
+.fr_hero_card {
+  background: var(--fr_green);
+  border-radius: var(--fr_radius);
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 110px;
+  flex: 0 0 auto;
+  color: #fff;
+}
+
+.fr_hero_pct {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.fr_hero_label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  opacity: 0.9;
+  margin-top: 4px;
+}
+
+.fr_hero_check {
+  font-size: 0.8rem;
+  margin-top: 6px;
+  opacity: 0.85;
+}
+
+/* Regular metric cards */
+.fr_kpi_card {
+  background: var(--fr_card);
+  border: 1px solid var(--fr_border);
+  border-radius: var(--fr_radius);
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 90px;
+  flex: 1 1 0;
+}
+
+.fr_kpi_label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--fr_lgray);
+  margin-bottom: 4px;
+}
+
+.fr_kpi_value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.1;
+}
+
+.fr_kpi_value.red   { color: var(--fr_red); }
+.fr_kpi_value.green { color: var(--fr_green); }
+
+.fr_kpi_sub {
+  font-size: 0.65rem;
+  color: var(--fr_lgray);
+  margin-top: 3px;
+}
+
+.fr_kpi_arrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.fr_kpi_arrow.down { color: var(--fr_red); }
+.fr_kpi_arrow.up   { color: var(--fr_green); }
+
+/* Yellow alert card (Ventas en Riesgo) */
+.fr_risk_card {
+  background: var(--fr_card);
+  border: 2px solid #fcd34d;
+  border-radius: var(--fr_radius);
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 130px;
+  flex: 0 0 auto;
+}
+
+.fr_risk_label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--fr_amber);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.fr_risk_value {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #111827;
+}
+
+/* ── Middle charts row ──────────────────────────────────────── */
+.fr_charts_row {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 18px;
+  align-items: stretch;
+}
+
+/* Shared chart card */
+.fr_chart_card {
+  background: var(--fr_card);
+  border: 1px solid var(--fr_border);
+  border-radius: var(--fr_radius);
+  padding: 16px 18px;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.fr_chart_card--fr { flex: 3 1 0; }
+.fr_chart_card--bo { flex: 2 1 0; }
+
+.fr_chart_title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+/* Chart card header: title + badge side by side */
+.fr_chart_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.fr_chart_header .fr_chart_title { margin-bottom: 0; }
+
+/* Green "Target 97% ▼" badge */
+.fr_fr_target_badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--fr_green);
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 6px;
+  padding: 2px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Fill Rate vs Target chart ──────────────────────────────── */
+.fr_fillrate_shell {
+  position: relative;
+  height: 260px;
+  display: flex;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.fr_fr_y_wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  margin-right: 4px;
+}
+
+.fr_fr_y_label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.6rem;
+  color: var(--fr_lgray);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.fr_fr_y_ticks {
+  position: relative;
+  width: 28px;
+  height: calc(100% - 20px);
+  text-align: right;
+  font-size: 0.6rem;
+  color: var(--fr_lgray);
+  flex-shrink: 0;
+}
+.fr_fr_y_ticks span {
+  position: absolute;
+  right: 0;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+.fr_fr_area {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+}
+
+.fr_fr_grid {
+  position: absolute;
+  inset: 0 0 20px 0;
+  pointer-events: none;
+}
+
+.fr_fr_grid span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  border-top: 1px solid #efefef;
+}
+
+.fr_fr_svg {
+  position: absolute;
+  inset: 0 0 20px 0;
+  width: 100%;
+  height: 40%;
+  overflow: visible;
+}
+
+.fr_fr_xaxis {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.6rem;
+  color: var(--fr_lgray);
+}
+
+.fr_fr_target_label {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--fr_green);
+}
+
+/* Right Y-axis for Fill Rate */
+.fr_fr_y_wrap_right {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  margin-left: 4px;
+}
+
+.fr_fr_y_ticks_right {
+  position: relative;
+  width: 28px;
+  height: calc(100% - 20px);
+  text-align: left;
+  font-size: 0.6rem;
+  color: var(--fr_lgray);
+  flex-shrink: 0;
+}
+.fr_fr_y_ticks_right span {
+  position: absolute;
+  left: 0;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+/* "-2 pts" red label floating inside chart */
+.fr_gap_label {
+  position: absolute;
+  font-size: 0.82rem;
+  font-weight: 900;
+  color: var(--fr_red);
+  /* sits between Sept and Oct, roughly 75% across, just below target line */
+  left: 68%;
+  top: 28%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Floating large "97%" grey label at the target line, right side */
+.fr_fr_97_label {
+  position: absolute;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #9ca3af;
+  right: 4px;
+  /* frYpos(97) = 20%, center on that line */
+  top: calc(20% - 0.55rem);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Alert inside chart area */
+.fr_fr_alert {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.68rem;
+  color: var(--fr_red);
+  font-weight: 600;
+  pointer-events: none;
+}
+
+/* Legend row */
+.fr_legend {
+  display: flex;
+  gap: 14px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.fr_legend_item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  color: #374151;
+}
+
+.fr_legend_dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.fr_legend_line {
+  width: 20px; height: 2px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.fr_legend_dashed {
+  width: 20px; height: 0;
+  border-top: 2px dashed #4b5563;
+  flex-shrink: 0;
+}
+
+/* ── Back Orders card inner layout: chart + right legend ───── */
+.fr_bo_card_body {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+}
+
+.fr_bo_chart_wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.fr_bo_legend_right {
+  display: none;
+}
+
+/* ── Back Orders bar chart ──────────────────────────────────── */
+.fr_bo_shell {
+  position: relative;
+  height: 240px;
+  display: flex;
+  gap: 0;
+  flex-shrink: 0;
+  flex: 1;
+}
+
+.fr_bo_y_wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: right;
+  font-size: 0.6rem;
+  color: var(--fr_lgray);
+  margin-right: 4px;
+  padding-bottom: 20px;
+}
+
+.fr_bo_area {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+}
+
+.fr_bo_grid {
+  position: absolute;
+  inset: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.fr_bo_grid span {
+  display: block;
+  border-top: 1px solid #f0f0f0;
+  width: 100%;
+}
+
+.fr_bo_bars {
+  position: absolute;
+  inset: 0 0 20px 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 0 4px;
+}
+
+.fr_bo_bar_group {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+}
+
+.fr_bo_bar {
+  width: 70%;
+  background: var(--fr_gray);
+  border-radius: 3px 3px 0 0;
+  min-height: 2px;
+}
+
+.fr_bo_xaxis {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+  font-size: 0.6rem;
+  color: var(--fr_lgray);
+}
+
+/* ── Bottom single card ──────────────────────────────────────── */
+.fr_bottom_card {
+  display: flex;
+  align-items: stretch;
+  background: var(--fr_card);
+  border: 1px solid var(--fr_border);
+  border-radius: var(--fr_radius);
+  overflow: hidden;
+}
+
+/* Left: chart area */
+.fr_bottom_left {
+  flex: 3 1 0;
+  padding: 16px 18px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Vertical divider */
+.fr_bottom_divider {
+  width: 1px;
+  background: var(--fr_border);
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+/* Right: info panel */
+.fr_bottom_right {
+  flex: 2 1 0;
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+/* Top row: label left, $45K right */
+.fr_br_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.fr_br_reorting {
+  font-size: 0.72rem;
+  color: var(--fr_lgray);
+  font-weight: 600;
+  padding-top: 4px;
+}
+
+.fr_br_value {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #111827;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.fr_br_alert {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  color: var(--fr_red);
+  font-weight: 600;
+}
+
+.fr_br_trend {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #374151;
+  text-align: right;
+}
+
+.fr_br_dot {
+  color: var(--fr_green);
+}
+
+/* Bottom Back Orders chart shell */
+.fr_bo_shell_lg {
+  position: relative;
+  height: 150px;
+  display: flex;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+/* ── Side info box ──────────────────────────────────────────── */
+.fr_side_info {
+  background: var(--fr_card);
+  border: 1px solid var(--fr_border);
+  border-radius: var(--fr_radius);
+  padding: 20px 22px;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Top row: reorting label left, $45K right */
+.fr_side_top_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.fr_side_left_col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.fr_side_right_col { flex-shrink: 0; }
+
+.fr_side_reorting {
+  font-size: 0.72rem;
+  color: var(--fr_lgray);
+  font-weight: 600;
+}
+
+.fr_side_alert {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  color: var(--fr_red);
+  font-weight: 600;
+}
+
+.fr_side_value {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #111827;
+  line-height: 1;
+}
+
+.fr_side_trend {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--fr_green);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .fr_charts_row   { flex-direction: column; }
+  .fr_bottom_card  { flex-direction: column; }
+  .fr_bottom_divider { width: 100%; height: 1px; }
+}
+
+@media (max-width: 700px) {
+  .view_block_fr { padding: 16px 12px; }
+  .fr_kpi_row    { flex-wrap: wrap; }
+}
+
+/* ============================================================
+   TOOLBAR DE FILTROS GLOBALES (fr_toolbar)
+   ============================================================ */
+.fr_toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--fr_card);
+  border: 1px solid var(--fr_border);
+  border-radius: var(--fr_radius);
+  padding: 14px 18px;
+  margin-bottom: 14px;
+}
+
+.fr_toolbar_title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.fr_toolbar_heading {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.fr_toolbar_date {
+  font-size: 0.8rem;
+  color: var(--fr_lgray);
+  font-weight: 600;
+}
+
+.fr_toolbar_filters {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.fr_toolbar_item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 120px;
+}
+
+.fr_toolbar_lbl {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--fr_lgray);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fr_toolbar_select {
+  height: 36px;
+  padding: 0 10px;
+  border: 1.5px solid var(--fr_border);
+  border-radius: 9px;
+  background: #fff;
+  color: #374151;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  min-width: 110px;
+}
+
+.fr_toolbar_select:focus {
+  border-color: var(--fr_green);
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.12);
+}
+
+.fr_select_multi {
+  width: 170px;
+}
+
+.fr_btn_reset {
+  height: 36px;
+  width: 36px;
+  border: 1.5px solid var(--fr_border);
+  border-radius: 9px;
+  background: #fff;
+  color: #374151;
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fr_btn_reset:hover {
+  background: rgba(220, 38, 38, 0.08);
+  border-color: var(--fr_red);
+  color: var(--fr_red);
+}
+
+/* ============================================================
+   UTILIDADES DINÁMICAS
+   ============================================================ */
+.fr_estado_vacio,
+.fr_fr_estado_vacio,
+.fr_bo_estado_vacio {
+  padding: 16px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.fr_fr_estado_vacio {
+  position: absolute;
+  inset: 0 0 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.fr_bo_estado_vacio {
+  position: absolute;
+  inset: 0 0 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+/* El SVG del fill rate debe ocupar toda el área de dibujo */
+.fr_fr_svg {
+  height: calc(100% - 20px);
+}
+
+/* ============================================================
+   DESGLOSE POR DEALER (tabla)
+   ============================================================ */
+.fr_dealers_section {
+  flex: 1;
+  padding: 16px 18px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.fr_dealers_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.fr_dealers_meta {
+  font-size: 0.72rem;
+  color: var(--fr_lgray);
+  font-weight: 600;
+}
+
+.fr_dealers_scroll {
+  overflow-x: auto;
+}
+
+.fr_dealers_table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.fr_dealers_table th {
+  text-align: left;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fr_lgray);
+  font-weight: 800;
+  padding: 8px 10px;
+  border-bottom: 2px solid var(--fr_border);
+  white-space: nowrap;
+}
+
+.fr_dealers_table td {
+  padding: 9px 10px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #1f2937;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.fr_dealers_table tbody tr:hover td {
+  background: var(--fr_bg);
+}
+
+.fr_dealer_name {
+  font-weight: 800;
+  color: #111827;
+}
+
+.fr_clickable {
+  cursor: pointer;
+}
+
+.fr_txt_green { color: var(--fr_green); font-weight: 700; }
+.fr_txt_red   { color: var(--fr_red);   font-weight: 700; }
+
+.fr_badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.fr_badge_green { background: var(--fr_greenbg); color: var(--fr_green); border: 1px solid #bbf7d0; }
+.fr_badge_amber { background: var(--fr_amberbg); color: #b45309;         border: 1px solid #fde68a; }
+.fr_badge_red   { background: var(--fr_redbg);   color: #b91c1c;         border: 1px solid #fca5a5; }
+.fr_badge_gray  { background: #f1f5f9;           color: #6b7280;         border: 1px solid #e2e8f0; }
+
+@media (max-width: 900px) {
+  .fr_toolbar_filters { gap: 8px; }
+}

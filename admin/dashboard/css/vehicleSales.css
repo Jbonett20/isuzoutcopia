@@ -1,0 +1,488 @@
+/* ================================================================
+   VEHICLE SALES – CSS
+   Blue accent theme, responsive, scoped under .view_block_vs
+   ================================================================ */
+
+/* ── CSS Variables (page-level overrides) ─────────────────────── */
+.view_block_vs {
+  --vs_blue:       #2563eb;
+  --vs_blue_dark:  #1d4ed8;
+  --vs_blue_light: #edf4ff;
+  --vs_blue_mid:   rgba(37, 99, 235, 0.12);
+  --vs_green:      #2db27d;
+  --vs_red:        #e45b68;
+  --vs_muted:      #6b7280;
+  --vs_border:     #e7ecf4;
+  --vs_surface:    #f8fafc;
+  --vs_radius:     14px;
+  --vs_shadow:     0 10px 24px rgba(19, 29, 54, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 4px 0 24px;
+}
+
+/* ── HEADER CARD (title + filters) ───────────────────────────── */
+.vs_header_card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 18px;
+  align-items: center;
+  padding: 20px 24px;
+  border-radius: var(--vs_radius);
+  background: var(--surface_main, #fff);
+  box-shadow: var(--vs_shadow);
+}
+
+.vs_heading_block h2 {
+  margin: 6px 0 4px;
+  font-size: 1.9rem;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  color: #1f2937;
+}
+
+.vs_heading_block h2 strong {
+  font-weight: 800;
+}
+
+.vs_heading_block .vs_overline {
+  display: inline-block;
+  color: var(--vs_blue);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+  margin-bottom: 2px;
+}
+
+.vs_heading_block .vs_subtitle {
+  margin: 2px 0 0;
+  color: var(--vs_muted);
+  font-size: 0.92rem;
+}
+
+/* Filters panel */
+.vs_filters_panel {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) 48px;
+  gap: 10px;
+  align-items: end;
+}
+
+.vs_filter_item {
+  display: grid;
+  gap: 6px;
+}
+
+.vs_filter_item label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+.vs_filter_item select {
+  height: 40px;
+  padding: 0 10px;
+  border: 1.5px solid var(--vs_border);
+  border-radius: 10px;
+  background: #fff;
+  color: #374151;
+  font-size: 0.88rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.vs_filter_item select:focus {
+  border-color: var(--vs_blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.vs_search_btn {
+  height: 40px;
+  width: 48px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--vs_blue);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+.vs_search_btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
+}
+
+/* ── ACTION BUTTONS ROW ───────────────────────────────────────── */
+.vs_actions_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.vs_btn_secondary,
+.vs_btn_primary {
+  border: 0;
+  border-radius: 12px;
+  padding: 13px 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  min-width: 220px;
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+.vs_btn_secondary {
+  background: var(--vs_blue_light);
+  color: var(--vs_blue_dark);
+}
+
+.vs_btn_primary {
+  background: linear-gradient(135deg, var(--vs_blue), var(--vs_blue_dark));
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.22);
+}
+
+.vs_btn_secondary:hover,
+.vs_btn_primary:hover {
+  transform: translateY(-1px);
+}
+
+.vs_btn_primary:hover {
+  box-shadow: 0 12px 26px rgba(37, 99, 235, 0.32);
+}
+
+.vs_btn_secondary .vs_icon,
+.vs_btn_primary .vs_icon {
+  font-size: 1.1rem;
+}
+
+/* ── INGRESO CARD ─────────────────────────────────────────────── */
+.vs_ingreso_card {
+  border-radius: var(--vs_radius);
+  background: var(--surface_main, #fff);
+  box-shadow: var(--vs_shadow);
+  padding: 24px 26px;
+}
+
+.vs_ingreso_card .vs_card_head h2 {
+  margin: 0 0 4px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.vs_ingreso_card .vs_card_head p {
+  margin: 0;
+  color: var(--vs_muted);
+  font-size: 0.9rem;
+}
+
+/* ── DROPZONE ──────────────────────────────────────────────────── */
+.vs_dropzone {
+  border: 2px dashed #d8deea;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fafcff, #f4f7fb);
+  min-height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  cursor: pointer;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  margin-top: 22px;
+}
+
+.vs_dropzone:hover,
+.vs_dropzone.is_dragover {
+  border-color: var(--vs_blue);
+  box-shadow: 0 14px 28px rgba(37, 99, 235, 0.12);
+  transform: translateY(-1px);
+}
+
+.vs_dropzone_content {
+  max-width: 520px;
+  pointer-events: none;
+}
+
+.vs_dropzone_icon {
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--vs_blue_light);
+  color: var(--vs_blue);
+  font-size: 2.4rem;
+}
+
+.vs_dropzone_content h3 {
+  margin: 0 0 8px;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.vs_dropzone_content p {
+  margin: 0;
+  color: var(--vs_muted);
+  font-size: 0.9rem;
+}
+
+/* ── VALIDATE BUTTON ──────────────────────────────────────────── */
+.vs_validate_section {
+  display: flex;
+  justify-content: center;
+  margin: 22px 0;
+}
+
+.vs_btn_validate {
+  border: 0;
+  border-radius: 12px;
+  padding: 14px 36px;
+  min-width: 280px;
+  background: linear-gradient(135deg, var(--vs_blue), var(--vs_blue_dark));
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.22);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.vs_btn_validate:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(37, 99, 235, 0.32);
+}
+
+/* ── SUMMARY ROW ─────────────────────────────────────────────── */
+.vs_summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.vs_summary_item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 14px;
+  padding: 16px 18px;
+  background: var(--vs_surface);
+  border: 1px solid var(--vs_border);
+}
+
+.vs_summary_item .vs_sum_icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.vs_summary_item.vs_success .vs_sum_icon {
+  background: rgba(45, 178, 125, 0.14);
+  color: var(--vs_green);
+}
+
+.vs_summary_item.vs_error .vs_sum_icon {
+  background: rgba(228, 91, 104, 0.14);
+  color: var(--vs_red);
+}
+
+.vs_summary_item strong {
+  font-size: 0.92rem;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+/* ── MESSAGE AREA ────────────────────────────────────────────── */
+.vs_message {
+  margin: 0 0 16px;
+  border-radius: 12px;
+  padding: 14px 16px;
+  background: var(--vs_surface);
+  color: #475569;
+  font-size: 0.9rem;
+  display: none;
+}
+
+.vs_message.is_success {
+  display: block;
+  background: rgba(45, 178, 125, 0.10);
+  color: #0f766e;
+}
+
+.vs_message.is_error {
+  display: block;
+  background: rgba(228, 91, 104, 0.10);
+  color: #b91c1c;
+}
+
+.vs_message.is_info {
+  display: block;
+  background: var(--vs_blue_mid);
+  color: var(--vs_blue_dark);
+}
+
+/* ── HISTORICAL LOG ─────────────────────────────────────────── */
+.vs_historico {
+  border-top: 1px solid var(--vs_border);
+  padding-top: 16px;
+  margin-top: 4px;
+}
+
+.vs_historico_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.vs_historico_toggle {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--vs_blue);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vs_historico_toggle:hover {
+  text-decoration: underline;
+}
+
+.vs_btn_confirm {
+  border: 1.5px solid var(--vs_border);
+  border-radius: 12px;
+  padding: 10px 22px;
+  background: var(--vs_surface);
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background .2s ease, border-color .2s ease;
+}
+
+.vs_btn_confirm:hover {
+  background: #f1f5f9;
+  border-color: #c6cedc;
+}
+
+.vs_btn_confirm:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.vs_historico_list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.vs_historico_empty {
+  color: var(--vs_muted);
+  font-size: 0.9rem;
+}
+
+/* ── INFO TEXT ───────────────────────────────────────────────── */
+.vs_info_text {
+  text-align: center;
+  font-size: 0.84rem;
+  color: var(--vs_muted);
+  margin: 0 0 20px;
+}
+
+/* ═══════════════════ RESPONSIVE ═══════════════════════════════ */
+
+/* tablet: stack header card columns */
+@media (max-width: 1100px) {
+  .vs_header_card {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* filters wrap to 2 columns */
+@media (max-width: 860px) {
+  .vs_filters_panel {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .vs_search_btn {
+    width: 100%;
+  }
+
+  .vs_summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* mobile */
+@media (max-width: 640px) {
+  .view_block_vs {
+    gap: 14px;
+  }
+
+  .vs_header_card {
+    padding: 16px 18px;
+  }
+
+  .vs_heading_block h2 {
+    font-size: 1.5rem;
+  }
+
+  .vs_filters_panel {
+    grid-template-columns: 1fr;
+  }
+
+  .vs_actions_row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .vs_btn_secondary,
+  .vs_btn_primary {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+  }
+
+  .vs_ingreso_card {
+    padding: 18px 16px;
+  }
+
+  .vs_dropzone_content h3 {
+    font-size: 1.2rem;
+  }
+
+  .vs_btn_validate {
+    width: 100%;
+    min-width: 0;
+  }
+}

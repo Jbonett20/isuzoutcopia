@@ -1,0 +1,899 @@
+/* ================================================================
+   INDEX REPORT – CSS
+   Scoped under .view_block_ir
+   ================================================================ */
+
+.view_block_ir {
+  --ir_red:        #d1142a;
+  --ir_red_light:  rgba(209, 20, 42, 0.08);
+  --ir_green:      #16a34a;
+  --ir_green_bg:   rgba(22, 163, 74, 0.10);
+  --ir_amber:      #d97706;
+  --ir_amber_bg:   rgba(217, 119, 6, 0.10);
+  --ir_blue:       #2563eb;
+  --ir_teal:       #1a4870;
+  --ir_muted:      #6b7280;
+  --ir_border:     #e7ecf4;
+  --ir_surface:    #f8fafc;
+  --ir_radius:     14px;
+  --ir_shadow:     0 10px 24px rgba(19, 29, 54, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 4px 0 24px;
+}
+
+/* ── PAGE TITLE ─────────────────────────────────────────── */
+.ir_page_title {
+  margin: 10px 0 0;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1f2937;
+  letter-spacing: -0.4px;
+}
+
+/* ── KPI CARDS ROW ──────────────────────────────────────── */
+.ir_kpi_row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 14px;
+  align-items: stretch;
+}
+
+.ir_kpi_card {
+  border-radius: var(--ir_radius);
+  background: #fff;
+  box-shadow: var(--ir_shadow);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ir_kpi_label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ir_muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.ir_kpi_value {
+  margin: 0;
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #1f2937;
+}
+
+.ir_kpi_value.ir_green { color: var(--ir_green); }
+.ir_kpi_value.ir_red   { color: var(--ir_red); }
+
+.ir_kpi_arrow { font-size: 1.6rem; line-height: 1; margin-left: 4px; }
+
+/* Double-metric card (UIO Growth) */
+.ir_kpi_card_double {
+  border-radius: var(--ir_radius);
+  background: #fff;
+  box-shadow: var(--ir_shadow);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ir_growth_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ir_growth_label {
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+.ir_growth_value {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--ir_green);
+  white-space: nowrap;
+}
+
+.ir_growth_divider {
+  border: none;
+  border-top: 1px solid var(--ir_border);
+  margin: 0;
+}
+
+/* ── INFO MESSAGE BOX ───────────────────────────────────── */
+.ir_info_box {
+  border-radius: var(--ir_radius);
+  background: #fff;
+  box-shadow: var(--ir_shadow);
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.ir_info_dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: var(--ir_green);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.ir_info_box .ir_red   { color: var(--ir_red);   font-weight: 800; }
+.ir_info_box .ir_green { color: var(--ir_green); font-weight: 800; }
+
+/* ── MAIN 2-COL SECTION ─────────────────────────────────── */
+.ir_main_row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.9fr) minmax(220px, 0.65fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+/* Chart card */
+.ir_chart_card {
+  border-radius: var(--ir_radius);
+  background: #fff;
+  box-shadow: var(--ir_shadow);
+  padding: 18px 20px 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ir_chart_card_title {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ir_chart_accent_bar {
+  width: 4px;
+  height: 18px;
+  border-radius: 3px;
+  background: var(--ir_teal);
+  flex-shrink: 0;
+}
+
+/* Chart shell – dual axis */
+.ir_chart_shell {
+  display: flex;
+  gap: 0;
+  height: 280px;
+  align-items: stretch;
+}
+
+/* Y axis left ($/UIO) */
+.ir_y_wrap {
+  display: flex;
+  gap: 4px;
+  align-items: stretch;
+  flex-shrink: 0;
+  padding-bottom: 26px;
+}
+
+.ir_y_label {
+  font-size: 0.68rem;
+  color: var(--ir_muted);
+  font-weight: 700;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ir_y_ticks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-right: 6px;
+  padding-bottom: 26px;
+  border-right: 1px solid var(--ir_border);
+  min-width: 50px;
+}
+
+.ir_y_ticks span {
+  font-size: 0.64rem;
+  color: var(--ir_muted);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Chart area */
+.ir_chart_area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.ir_chart_grid {
+  position: absolute;
+  inset: 0 0 26px 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ir_chart_grid span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #e7ebf1;
+}
+
+/* SVG line overlay */
+.ir_lines_svg {
+  position: absolute;
+  inset: 0 4px 26px;
+  width: calc(100% - 8px);
+  height: calc(100% - 26px);
+  overflow: visible;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Bars */
+.ir_bars {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  gap: 4px;
+  padding: 0 4px 26px;
+  position: relative;
+  z-index: 3;
+}
+
+.ir_bar_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.ir_bar_wrap:hover .ir_bar { opacity: .82; }
+
+.ir_bar {
+  width: 72%;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(to top, #0e2a3e 0%, #0e2a3e 52%, #4a8fc8 52%, #6db0e8 100%);
+  transition: opacity .2s;
+  min-height: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.ir_bar.is_active {
+  opacity: 1;
+  background: linear-gradient(to top, #0e2a3e 0%, #0e2a3e 52%, #c97a10 52%, #e8962a 100%);
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px #c97a10;
+}
+
+.ir_bar_label {
+  position: absolute;
+  bottom: 4px;
+  font-size: 0.6rem;
+  color: var(--ir_muted);
+  white-space: nowrap;
+  user-select: none;
+  text-align: center;
+}
+
+/* Data label on top of bar – amber (active) */
+.ir_bar_dlabel {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fef3c7;
+  border: 1.5px solid #fbbf24;
+  border-radius: 6px;
+  padding: 2px 7px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #92400e;
+  white-space: nowrap;
+  display: none;
+  z-index: 10;
+}
+.ir_bar_dlabel.is_visible { display: block; }
+
+/* Data label – blue style (pinned on bar 0) */
+.ir_bar_dlabel.ir_dlabel_blue {
+  background: #dbeafe;
+  border-color: #3b82f6;
+  color: #1e3a8a;
+}
+
+/* Y axis right (UIO) */
+.ir_y_wrap_right {
+  display: flex;
+  align-items: stretch;
+  flex-shrink: 0;
+  padding-bottom: 26px;
+  gap: 4px;
+}
+
+.ir_y_label_right {
+  font-size: 0.68rem;
+  color: var(--ir_muted);
+  font-weight: 700;
+  writing-mode: vertical-rl;
+  transform: rotate(0deg);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ir_y_ticks_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-left: 6px;
+  padding-bottom: 26px;
+  border-left: 1px solid var(--ir_border);
+  min-width: 40px;
+}
+
+.ir_y_ticks_right span {
+  font-size: 0.64rem;
+  color: var(--ir_muted);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Tooltip */
+.ir_tooltip {
+  position: absolute;
+  background: #fefce8;
+  border: 1.5px solid #fde047;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1f2937;
+  pointer-events: none;
+  z-index: 20;
+  white-space: nowrap;
+  display: none;
+  box-shadow: 0 6px 16px rgba(0,0,0,.12);
+}
+
+.ir_tooltip.is_visible { display: block; }
+
+.ir_tooltip_main {
+  font-size: 1.1rem;
+  font-weight: 800;
+  display: block;
+}
+
+.ir_tooltip_sub {
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.ir_tooltip_sub.ir_dn  { color: var(--ir_red); }
+.ir_tooltip_sub.ir_up  { color: var(--ir_green); }
+
+/* Legend */
+.ir_legend {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--ir_border);
+}
+
+.ir_legend_item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: #374151;
+  font-weight: 600;
+}
+
+.ir_legend_dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.ir_legend_dashed {
+  width: 22px;
+  height: 0;
+  border-top: 2px dashed currentColor;
+  flex-shrink: 0;
+}
+
+/* ── TOP DEALERS CARD ───────────────────────────────────── */
+.ir_dealers_card {
+  border-radius: var(--ir_radius);
+  background: #fff;
+  box-shadow: var(--ir_shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.ir_dealers_body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.ir_dealers_body::-webkit-scrollbar { width: 5px; }
+.ir_dealers_body::-webkit-scrollbar-track { background: var(--ir_surface); border-radius: 10px; }
+.ir_dealers_body::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+.ir_dealers_body::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+.ir_dealers_body { scrollbar-width: thin; scrollbar-color: #d1d5db var(--ir_surface); }
+
+.ir_dealers_head {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--ir_border);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.ir_dealers_table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ir_dealers_table thead th {
+  padding: 8px 14px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--ir_muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--ir_border);
+  background: var(--ir_surface);
+  text-align: left;
+}
+
+.ir_dealers_table thead th:last-child { text-align: right; }
+
+.ir_dealers_table tbody tr {
+  border-bottom: 1px solid var(--ir_border);
+  transition: background .15s;
+}
+
+.ir_dealers_table tbody tr:last-child { border-bottom: 0; }
+.ir_dealers_table tbody tr:hover { background: var(--ir_surface); }
+
+.ir_dealers_table tbody td {
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.ir_td_right { text-align: right; }
+
+.ir_rank_badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #374151;
+}
+
+.ir_rank_1 { background: #fef9c3; color: #a16207; }
+.ir_rank_2 { background: #f1f5f9; color: #475569; }
+.ir_rank_3 { background: #fde8d0; color: #9a3412; }
+
+/* Trend legend at bottom of dealers card */
+.ir_dealers_legend {
+  padding: 10px 14px;
+  border-top: 1px solid var(--ir_border);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.ir_dlgnd_item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: #374151;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.ir_dlgnd_icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.ir_dlgnd_icon.amber      { background: var(--ir_amber_bg); color: var(--ir_amber); }
+.ir_dlgnd_icon.red        { background: var(--ir_red_light); color: var(--ir_red); }
+.ir_dlgnd_icon.green      { background: var(--ir_green_bg); color: var(--ir_green); border-radius: 4px; }
+.ir_dlgnd_icon.circle     {
+  background: transparent;
+  border: 2px solid #9ca3af;
+  border-radius: 50%;
+  color: #9ca3af;
+  font-size: 0;
+}
+
+/* ── BOTTOM TABLE SECTION ─────────────────────────────────── */
+.ir_table_section {
+  border-radius: var(--ir_radius);
+  background: #fff;
+  box-shadow: var(--ir_shadow);
+  overflow: hidden;
+}
+
+.ir_table_head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--ir_border);
+}
+
+.ir_table_title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.ir_table_title strong { font-weight: 900; }
+
+.ir_table_filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ir_tbl_filter_item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+.ir_tbl_select {
+  height: 32px;
+  padding: 0 8px;
+  border: 1.5px solid var(--ir_border);
+  border-radius: 8px;
+  background: #fff;
+  color: #374151;
+  font-size: 0.83rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: border-color .2s;
+}
+
+.ir_tbl_select:focus { border-color: var(--ir_blue); }
+
+.ir_data_table_wrap { overflow-x: auto; }
+
+.ir_data_table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.ir_data_table thead th {
+  padding: 10px 16px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ir_muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--ir_border);
+  background: var(--ir_surface);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.ir_data_table tbody tr {
+  border-bottom: 1px solid var(--ir_border);
+  transition: background .15s;
+}
+
+.ir_data_table tbody tr:last-child { border-bottom: 0; }
+.ir_data_table tbody tr:hover { background: var(--ir_surface); }
+
+.ir_data_table tbody td {
+  padding: 11px 16px;
+  font-size: 0.88rem;
+  color: #1f2937;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ir_val_high  { color: var(--ir_green); font-weight: 800; }
+.ir_val_low   { color: var(--ir_red);   font-weight: 800; }
+.ir_val_mid   { color: var(--ir_amber); font-weight: 800; }
+
+.ir_var_up   { color: var(--ir_green); font-weight: 700; }
+.ir_var_down { color: var(--ir_red);   font-weight: 700; }
+.ir_var_zero { color: var(--ir_muted); font-weight: 700; }
+
+.ir_trend_badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.ir_trend_down3  { background: var(--ir_amber_bg); color: var(--ir_amber); }
+.ir_trend_rebote { background: var(--ir_green_bg); color: var(--ir_green); }
+.ir_trend_down5  { background: var(--ir_red_light); color: var(--ir_red); }
+
+/* Red table title */
+.ir_title_red {
+  color: var(--ir_red);
+  font-weight: 900;
+}
+
+/* ── HEALTH SCALE STRIP ─────────────────────────────────── */
+.ir_health_strip {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ir_health_bar {
+  display: flex;
+  height: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ir_health_green  { flex: 1; background: #16a34a; }
+.ir_health_yellow { flex: 1; background: #eab308; }
+.ir_health_red    { flex: 1; background: #d1142a; }
+
+.ir_health_labels {
+  display: flex;
+}
+
+.ir_health_labels span {
+  flex: 1;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.ir_hl_green  { color: #16a34a; }
+.ir_hl_yellow { color: #ca8a04; }
+.ir_hl_red    { color: #d1142a; }
+
+/* ═══════════════════ RESPONSIVE ══════════════════════════ */
+
+@media (max-width: 1200px) {
+  .ir_kpi_row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ir_kpi_card_double { grid-column: span 2; }
+}
+
+@media (max-width: 1000px) {
+  .ir_main_row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .ir_kpi_row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .ir_kpi_card_double { grid-column: span 2; }
+  .ir_kpi_value { font-size: 2rem; }
+  .ir_chart_shell { height: 220px; }
+  .ir_table_head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .ir_kpi_row { grid-template-columns: 1fr; }
+  .ir_kpi_card_double { grid-column: span 1; }
+  .ir_page_title { font-size: 1.5rem; }
+  .ir_growth_row { flex-direction: column; align-items: flex-start; }
+}
+
+/* ================================================================
+   TOOLBAR DE FILTROS GLOBALES (ir_toolbar)
+   ================================================================ */
+
+.ir_toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #fff;
+  border-radius: var(--ir_radius);
+  box-shadow: var(--ir_shadow);
+  padding: 14px 18px;
+  margin-bottom: 2px;
+}
+
+.ir_toolbar_title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ir_toolbar_heading {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.ir_toolbar_date {
+  font-size: 0.8rem;
+  color: var(--ir_muted);
+  font-weight: 600;
+}
+
+.ir_toolbar_filters {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ir_toolbar_item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 120px;
+}
+
+.ir_toolbar_lbl {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--ir_muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ir_toolbar_select {
+  height: 36px;
+  padding: 0 10px;
+  border: 1.5px solid var(--ir_border);
+  border-radius: 9px;
+  background: #fff;
+  color: #374151;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  min-width: 110px;
+}
+
+.ir_toolbar_select:focus {
+  border-color: var(--ir_blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.ir_select_multi {
+  width: 170px;
+}
+
+.ir_btn_reset {
+  height: 36px;
+  width: 36px;
+  border: 1.5px solid var(--ir_border);
+  border-radius: 9px;
+  background: #fff;
+  color: #374151;
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ir_btn_reset:hover {
+  background: var(--ir_red_light);
+  border-color: var(--ir_red);
+  color: var(--ir_red);
+}
+
+/* ================================================================
+   UTILIDADES DIN�MICAS
+   ================================================================ */
+
+.ir_kpi_sub {
+  margin: 4px 0 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ir_muted);
+}
+
+.ir_chart_periodo {
+  margin-left: auto;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ir_muted);
+  white-space: nowrap;
+}
+
+.ir_estado_vacio {
+  padding: 16px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.ir_td_indice {
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.ir_growth_value.ir_green { color: var(--ir_green); }
+.ir_growth_value.ir_red   { color: var(--ir_red); }
+
+.ir_clickable {
+  cursor: pointer;
+}
+
+.ir_dealers_table tbody tr.ir_clickable:hover td {
+  background: var(--ir_surface);
+}

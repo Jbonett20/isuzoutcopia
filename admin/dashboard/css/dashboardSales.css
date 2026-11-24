@@ -1,0 +1,978 @@
+/* ============================================================
+   ISUZU KPI – Tablero de Ventas
+   dashboardSales.css
+   ============================================================ */
+
+/* ── 1. VIEW WRAPPER ──────────────────────────────────────── */
+#seccion_tablero {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 0 0 24px;
+}
+
+/* ── 2. TOOLBAR ───────────────────────────────────────────── */
+#toolbar_tablero.toolbar_tablero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 18px;
+}
+
+.titulo_wrap_tablero {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.titulo_tablero {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text_main);
+    white-space: nowrap;
+}
+
+.fecha_tablero {
+    font-size: 0.78rem;
+    color: #6b7280;
+    font-weight: 400;
+}
+
+.titulo_tablero strong {
+    font-weight: 800;
+    color: var(--text_main);
+}
+
+.filtros_tablero {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filtro_item_tablero {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.filtro_lbl_tablero {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4b5563;
+    white-space: nowrap;
+}
+
+.select_tablero {
+    font-size: 0.88rem;
+    padding: 7px 10px;
+    border-radius: 9px;
+    border: 1px solid #d9dce4;
+    background: #f9fafc;
+    color: var(--text_main);
+    min-width: 110px;
+    cursor: pointer;
+}
+
+.filtro_kpi_lbl_tablero {
+    font-size: 0.88rem;
+    color: #374151;
+    font-weight: 600;
+    background: #f2f4f8;
+    border: 1px solid #e4e8ef;
+    border-radius: 9px;
+    padding: 7px 12px;
+    white-space: nowrap;
+}
+
+.filtro_kpi_lbl_tablero strong {
+    color: var(--text_main);
+    font-weight: 800;
+}
+
+.btn_buscar_tablero {
+    width: 42px;
+    height: 38px;
+    border: 0;
+    border-radius: 9px;
+    background: #677085;
+    color: #fff;
+    font-size: 0.95rem;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background .2s;
+}
+
+.btn_buscar_tablero:hover {
+    background: #4b5563;
+}
+
+/* ── 3. KPI CARDS GRID ────────────────────────────────────── */
+.kpi_grid_tablero {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.kpi_card_tablero {
+    position: relative;
+    padding: 14px 16px 13px;
+    border: 1px solid #e4e8ef;
+    border-radius: 12px;
+    min-height: 130px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Card title row */
+.kpi_title_tablero {
+    margin: 0;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    min-height: 26px;
+    gap: 7px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Large value */
+.kpi_value_tablero {
+    margin: 0;
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text_main);
+    position: relative;
+    z-index: 1;
+}
+
+.kpi_unit_tablero {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6b7280;
+    margin-left: 2px;
+}
+
+/* Trend line */
+.kpi_trend_tablero {
+    margin: 2px 0 0;
+    font-size: 0.78rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    z-index: 1;
+}
+
+.kpi_trend_tablero.up_tablero {
+    color: var(--green_main);
+}
+
+.kpi_trend_tablero.neutral_tablero {
+    color: var(--yellow_main);
+}
+
+.kpi_trend_tablero.down_tablero {
+    color: var(--red_main);
+}
+
+.trend_icon_tablero {
+    transform: rotate(45deg);
+    display: inline-block;
+}
+
+/* Progress bar */
+.kpi_progress_tablero {
+    height: 5px;
+    border-radius: 99px;
+    background: #f0f2f6;
+    margin: 6px 0 2px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.kpi_progress_tablero span {
+    display: block;
+    height: 100%;
+    border-radius: 99px;
+    transition: width .4s ease;
+}
+
+/* ── 3a. CARD 1 – Venta Actual (Green) ──────────────────── */
+.success_tablero .kpi_value_tablero {
+    color: #1a4231;
+}
+
+.success_tablero .kpi_progress_tablero span {
+    background: var(--green_main);
+}
+
+/* Ascending chart-shape background */
+.kpi_bg_chart_tablero {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: #dff2e9;
+    clip-path: polygon(0 100%, 30% 70%, 50% 55%, 65% 42%, 80% 28%, 100% 12%, 100% 100%);
+}
+
+/* ── 3b. CARD CHIPS ─────────────────────────────────────── */
+.kpi_chip_tablero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+}
+
+/* Orange – Var % vs LY */
+.chip_warning_tablero {
+    background: #fbeecf;
+    color: #c87c0a;
+}
+
+.warning_tablero .kpi_progress_tablero span {
+    background: var(--yellow_main);
+}
+
+.warning_tablero .kpi_value_tablero {
+    color: #c87c0a;
+}
+
+/* Tan/Beige – Objetivo */
+.chip_info_tablero {
+    background: #f0e8dc;
+    color: #9b7444;
+}
+
+.info_tablero .kpi_progress_tablero span {
+    background: #c9a26e;
+}
+
+.info_tablero .kpi_value_tablero {
+    color: var(--text_main);
+}
+
+/* Red/Pink – Gap */
+.chip_danger_tablero {
+    background: #fee1e7;
+    color: var(--red_main);
+}
+
+.danger_tablero .kpi_progress_tablero span {
+    background: var(--red_main);
+}
+
+.danger_tablero .kpi_value_tablero {
+    color: var(--red_main);
+}
+
+/* ── 4. CHART SECTION ──────────────────────────────────────── */
+.panel_chart_tablero {
+    padding: 16px 18px 14px;
+}
+
+.chart_title_tablero {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.chart_subtitle_tablero {
+    font-weight: 500;
+    color: var(--muted_main);
+    font-size: 1rem;
+}
+
+/* Shell: y-axis + chart area side by side */
+.chart_shell_tablero {
+    display: flex;
+    gap: 0;
+    margin-top: 14px;
+    height: 280px;
+    align-items: stretch;
+}
+
+/* Y-axis column */
+.chart_y_wrap_tablero {
+    display: flex;
+    gap: 6px;
+    align-items: stretch;
+    flex-shrink: 0;
+    padding-bottom: 24px; /* make room for x-axis labels */
+}
+
+.chart_y_label_tablero {
+    font-size: 0.7rem;
+    color: var(--muted_main);
+    font-weight: 700;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-align: center;
+    white-space: nowrap;
+}
+
+.chart_y_ticks_tablero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-right: 6px;
+    padding-bottom: 24px;
+    border-right: 1px solid #e4e8ef;
+}
+
+.chart_y_ticks_tablero span {
+    font-size: 0.68rem;
+    color: var(--muted_main);
+    line-height: 1;
+}
+
+/* Chart area: contains bars + tooltip + target line */
+.chart_area_tablero {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.chart_grid_tablero {
+    position: absolute;
+    inset: 0 0 24px 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.chart_grid_tablero span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #e7ebf1;
+}
+
+/* Dashed target line */
+.chart_target_line_tablero {
+    position: absolute;
+    top: 8%;
+    left: 0;
+    right: 0;
+    border-top: 2px dashed #d95959;
+    z-index: 10;
+    pointer-events: none;
+    transition: top 0.3s ease;
+}
+
+.target_badge_tablero {
+    position: absolute;
+    right: 0;
+    top: -12px;
+    background: #f9ecec;
+    color: #d95959;
+    border: 1px solid #efc9c9;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 6px;
+    line-height: 1.5;
+}
+
+/* Bars wrapper */
+.chart_bars_wrap_tablero {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 3;
+}
+
+.linea_ly_tablero {
+    position: absolute;
+    inset: 0 4px 24px;
+    width: calc(100% - 8px);
+    height: calc(100% - 24px);
+    overflow: visible;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.ly_poly_tablero {
+    fill: none;
+    stroke: #c2c7d0;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.ly_point_tablero {
+    fill: #f7f8fb;
+    stroke: #c2c7d0;
+    stroke-width: 2;
+}
+
+.ly_point_active_tablero {
+    fill: #ffffff;
+    stroke: #df6a74;
+}
+
+.bars_tablero {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    gap: 4px;
+    padding: 0 4px 24px;   /* bottom: space for x-axis labels */
+}
+
+.bar_wrap_tablero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    gap: 0;
+    padding-bottom: 0;
+}
+
+.bar_objetivo_tablero {
+    position: absolute;
+    bottom: 24px;
+    width: 100%;
+    background: #d3d7dd;
+    border-radius: 2px 2px 0 0;
+    z-index: 1;
+}
+
+.bar_tablero {
+    position: relative;
+    width: calc(100% - 2px);
+    height: var(--h, 10%);
+    background: #4b5c69;
+    border-radius: 2px 2px 0 0;
+    transition: height .4s ease, background .2s;
+    z-index: 2;
+}
+
+.bar_wrap_tablero:hover .bar_tablero {
+    background: #566a79;
+}
+
+/* Highlighted/active bar (red, 2024) */
+.highlight_bar_tablero {
+    background: #cb5864 !important;
+}
+
+/* X-axis year labels */
+.bar_wrap_tablero span {
+    font-size: 0.6rem;
+    color: #38495e;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: -18px;
+}
+
+.bar_wrap_tablero {
+    position: relative;
+}
+
+.x_active_tablero {
+    color: #2d3642 !important;
+    font-weight: 800 !important;
+}
+
+/* Tooltip */
+.tooltip_tablero {
+    position: absolute;
+    top: 14%;
+    right: 9%;
+    background: #fff;
+    border: 1px solid #e4e8ef;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(19, 29, 54, 0.08);
+    padding: 10px 14px;
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.82rem;
+    min-width: 175px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.tooltip_tablero.is_visible_tablero {
+    display: flex;
+}
+
+.tooltip_tablero strong {
+    font-size: 0.88rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.tooltip_tablero span {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: #4b5563;
+}
+
+.tooltip_tablero b {
+    font-weight: 800;
+    color: var(--text_main);
+}
+
+.negativo_tablero {
+    color: var(--brand_main);
+}
+
+.positivo_tablero {
+    color: #2e8f65;
+}
+
+/* Legend */
+.leyenda_chart_tablero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    font-size: 0.78rem;
+    color: #4b5563;
+}
+
+.leyenda_chart_tablero span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.dot_leyenda_tablero {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.actual_leyenda_tablero {
+    background: #4b5c69;
+}
+
+.objetivo_leyenda_tablero {
+    background: #d3d7dd;
+}
+
+/* Line legends (dashes) */
+.line_leyenda_tablero {
+    display: inline-block;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.ly_leyenda_tablero {
+    background: repeating-linear-gradient(90deg, #b7bdc8 0, #b7bdc8 3px, transparent 3px, transparent 7px);
+}
+
+.obj_leyenda_tablero {
+    background: repeating-linear-gradient(90deg, #374151 0, #374151 6px, transparent 6px, transparent 10px);
+}
+
+.target_leyenda_tablero {
+    background: repeating-linear-gradient(90deg, #b7bdc8 0, #b7bdc8 4px, transparent 4px, transparent 7px);
+}
+
+/* ── 5. TABLE SECTION ──────────────────────────────────────── */
+.panel_table_tablero {
+    padding: 0;
+    overflow: hidden;
+}
+
+.head_table_tablero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f2f6;
+}
+
+.toggle_table_tablero {
+    background: transparent;
+    border: 0;
+    font: inherit;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--text_main);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.toggle_table_tablero .toggle_icon_tablero {
+    font-size: 0.75rem;
+    color: var(--muted_main);
+    transition: transform .2s;
+}
+
+.btn_more_tablero {
+    background: transparent;
+    border: 0;
+    font-size: 1.1rem;
+    color: var(--muted_main);
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: grid;
+    place-items: center;
+    transition: background .2s;
+}
+
+.btn_more_tablero:hover {
+    background: #f2f4f8;
+}
+
+/* Collapsible body */
+.table_body_wrap_tablero {
+    overflow: hidden;
+    transition: max-height .3s ease, opacity .3s ease;
+    max-height: 800px;
+    opacity: 1;
+}
+
+.table_body_wrap_tablero.is_collapsed_tablero {
+    max-height: 0;
+    opacity: 0;
+}
+
+.table_wrap_tablero {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#tabla_comparativa_tablero {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+#tabla_comparativa_tablero th {
+    background: #f7f8fb;
+    font-weight: 700;
+    color: #374151;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 2px solid #e8ebf2;
+    white-space: nowrap;
+}
+
+#tabla_comparativa_tablero td {
+    padding: 10px 14px;
+    color: #4b5563;
+    border-bottom: 1px solid #f0f2f6;
+    vertical-align: middle;
+}
+
+#tabla_comparativa_tablero tbody tr:hover td {
+    background: #fafbfd;
+}
+
+/* Pagination inside th */
+.th_paginado_tablero {
+    text-align: right !important;
+    font-weight: 600 !important;
+    color: var(--muted_main) !important;
+    font-size: 0.8rem !important;
+}
+
+.th_search_icon_tablero {
+    margin-right: 6px;
+    color: var(--muted_main);
+}
+
+.pag_next_tablero {
+    background: transparent;
+    border: 0;
+    color: var(--muted_main);
+    cursor: pointer;
+    padding: 2px 4px;
+    margin-left: 4px;
+    font-size: 0.78rem;
+    border-radius: 5px;
+    transition: background .2s, color .2s;
+}
+
+.pag_next_tablero:hover {
+    background: #e9ecf2;
+    color: var(--text_main);
+}
+
+.empty_tablero {
+    text-align: center;
+    padding: 24px !important;
+    color: var(--muted_main);
+    font-size: 0.85rem;
+}
+
+/* ── 6. RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 1100px) {
+    .tooltip_tablero {
+        top: 8%;
+        right: 2%;
+        min-width: 155px;
+    }
+}
+
+@media (max-width: 900px) {
+    .kpi_grid_tablero {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #toolbar_tablero.toolbar_tablero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filtros_tablero {
+        width: 100%;
+    }
+
+    .chart_shell_tablero {
+        height: 220px;
+    }
+
+    .tooltip_tablero {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        border-top: 1px solid #e4e8ef;
+        border-radius: 0;
+        margin-top: 8px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .tooltip_tablero strong {
+        width: 100%;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .kpi_grid_tablero {
+        grid-template-columns: 1fr;
+    }
+
+    .chart_shell_tablero {
+        height: 200px;
+    }
+
+    .chart_y_wrap_tablero {
+        display: none;
+    }
+
+    .filtros_tablero {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filtro_item_tablero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .select_tablero {
+        width: 100%;
+    }
+
+    .filtro_kpi_lbl_tablero {
+        width: 100%;
+    }
+
+    .btn_buscar_tablero {
+        width: 100%;
+        height: 40px;
+    }
+
+    .leyenda_chart_tablero {
+        gap: 10px;
+        justify-content: flex-start;
+    }
+
+    .titulo_tablero {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 420px) {
+    #seccion_tablero {
+        gap: 10px;
+    }
+
+    .kpi_value_tablero {
+        font-size: 2.2rem;
+    }
+
+    #toolbar_tablero.toolbar_tablero {
+        padding: 12px;
+    }
+}
+
+/* ── 4.1b. MULTI-SELECT (select2) en la toolbar ───────────── */
+.select_multi_tablero {
+    min-width: 160px;
+}
+
+.filtros_tablero .select2-container {
+    min-width: 160px;
+    max-width: 230px;
+}
+
+.filtros_tablero .select2-container .select2-selection--multiple {
+    border: 1px solid #d9dce4;
+    border-radius: 9px;
+    background: #f9fafc;
+    min-height: 38px;
+    padding: 2px 4px;
+    display: flex;
+    align-items: center;
+}
+
+.filtros_tablero .select2-container .select2-selection--multiple .select2-selection__rendered {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3px;
+    padding: 0;
+}
+
+.filtros_tablero .select2-container .select2-selection--multiple .select2-selection__choice {
+    background: #e8ecf3;
+    border: 1px solid #d5dae3;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #374151;
+    padding: 1px 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+}
+
+.filtros_tablero .select2-container .select2-selection--multiple .select2-selection__choice__remove {
+    color: #6b7280;
+    font-size: 0.8rem;
+    margin-right: 0;
+}
+
+.filtros_tablero .select2-container .select2-search--inline .select2-search__field {
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 0;
+    min-height: 0;
+    height: auto;
+}
+
+.filtros_tablero .select2-container--default .select2-selection--multiple .select2-selection__placeholder {
+    color: #9aa1ac;
+    font-size: 0.85rem;
+}
+
+/* ── 4.1c. DELTA DE COMPARACIÓN (título del gráfico) ──────── */
+.delta_comparacion_tablero {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 3px 9px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    vertical-align: middle;
+}
+
+.delta_comparacion_tablero.positivo_tablero {
+    background: #e2f4ea;
+    color: #1e7a4c;
+}
+
+.delta_comparacion_tablero.negativo_tablero {
+    background: #fde7ec;
+    color: var(--red_main);
+}
+
+/* ── 4.2. ESTADOS VACÍOS Y "SIN OBJETIVO" ─────────────────── */
+.kpi_sin_objetivo_tablero {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #b6bcc7;
+    display: inline-block;
+}
+
+.empty_state_tablero {
+    padding: 30px 16px;
+    text-align: center;
+    color: var(--muted_main);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.bars_tablero .empty_state_tablero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0;
+}
+
+/* Responsive de los multi-select */
+@media (max-width: 600px) {
+    .filtros_tablero .select2-container {
+        max-width: 100%;
+        width: 100% !important;
+    }
+}
+
+/* ── 5.2. MARCADOR DE OBJETIVO POR BARRA Y BARRA ACTIVA ────── */
+.bar_objetivo_mark_tablero {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #d95959;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: 2px;
+}
+
+.bar_wrap_tablero.is_activo_tablero .bar_tablero {
+    outline: 2px solid var(--brand_main);
+    outline-offset: 1px;
+}

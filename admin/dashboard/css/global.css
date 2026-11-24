@@ -1,0 +1,158 @@
+:root {
+  --bg_main: #eff1f4;
+  --surface_main: #ffffff;
+  --surface_soft_main: #f5f7fa;
+  --text_main: #1f2937;
+  --muted_main: #6b7280;
+  --brand_main: #d1142a;
+  --green_main: #2db27d;
+  --yellow_main: #f2b63f;
+  --red_main: #e45b68;
+  --gray_main: #aeb3bf;
+  --shadow_main: 0 10px 24px rgba(19, 29, 54, 0.08);
+  --radius_main: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  color: var(--text_main);
+  background: radial-gradient(circle at 0% 0%, #ffffff 0%, #eff1f4 50%, #e9ecf2 100%);
+}
+
+input,
+select,
+button {
+  font: inherit;
+}
+
+.app_bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(145deg, rgba(209, 20, 42, 0.04), rgba(77, 110, 160, 0.04));
+}
+
+.app_shell {
+  position: relative;
+  z-index: 1;
+  width: min(1280px, 95vw);
+  margin: 20px auto;
+}
+
+.topbar_card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 14px;
+  padding: 14px 18px;
+  border-radius: var(--radius_main);
+  background: var(--surface_main);
+  box-shadow: var(--shadow_main);
+}
+
+.brand_block {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.brand_logo {
+  color: var(--brand_main);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.5px;
+}
+
+.brand_sub {
+  color: #4b5563;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.menu_nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.menu_item {
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #2f3747;
+  font-weight: 700;
+  padding: 10px 14px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.menu_item.is_active {
+  background: #fafafa;
+  box-shadow: inset 0 -3px 0 var(--brand_main);
+  color: #111827;
+}
+
+.logout_btn {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: #f3f4f6;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.view_container {
+  min-height: 560px;
+}
+
+.card_common {
+  border-radius: var(--radius_main);
+  background: var(--surface_main);
+  box-shadow: var(--shadow_main);
+}
+
+.panel_common {
+  margin-bottom: 12px;
+  padding: 12px;
+}
+
+.panel_head_common {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.panel_head_common h2 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.input_common,
+.select_common {
+  border: 1px solid #d9dce4;
+  border-radius: 9px;
+  background: var(--surface_soft_main);
+  padding: 8px 10px;
+  color: #374151;
+}
+
+@media (max-width: 760px) {
+  .topbar_card {
+    grid-template-columns: 1fr;
+  }
+
+  .brand_block {
+    justify-content: space-between;
+  }
+}

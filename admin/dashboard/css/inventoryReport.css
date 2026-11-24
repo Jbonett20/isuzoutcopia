@@ -1,0 +1,717 @@
+/* ============================================================
+   Inventory Report  –  scoped to .view_block_ir
+   ============================================================ */
+.view_block_ir {
+  --ir_navy:   #1e3a5f;
+  --ir_blue:   #3b82f6;
+  --ir_orange: #f97316;
+  --ir_red:    #dc2626;
+  --ir_green:  #16a34a;
+  --ir_amber:  #d97706;
+  --ir_gray:   #4b5563;
+  --ir_muted:  #6b7280;
+  --ir_border: #e5e7eb;
+  --ir_bg:     #f8fafc;
+  --ir_card:   #ffffff;
+  --ir_radius: 10px;
+
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: var(--ir_bg);
+  min-height: 100vh;
+  padding: 24px 28px;
+  box-sizing: border-box;
+}
+
+/* ── Page title ─────────────────────────────────────────────── */
+.ir_title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 14px;
+}
+
+/* ── Filters row ────────────────────────────────────────────── */
+.ir_filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.ir_filter_group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  color: var(--ir_muted);
+  font-weight: 600;
+}
+
+.ir_filter_group select {
+  border: 1px solid var(--ir_border);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.78rem;
+  background: #fff;
+  color: #374151;
+  cursor: pointer;
+  outline: none;
+}
+
+/* ── KPI Cards ──────────────────────────────────────────────── */
+.ir_kpi_row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: nowrap;
+}
+
+.ir_kpi_card {
+  background: var(--ir_card);
+  border-radius: var(--ir_radius);
+  border: 1px solid var(--ir_border);
+  padding: 14px 18px;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.ir_kpi_label {
+  font-size: 0.7rem;
+  color: var(--ir_muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: 5px;
+}
+
+.ir_kpi_value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #111827;
+}
+
+.ir_kpi_value.red    { color: var(--ir_red);   }
+.ir_kpi_value.green  { color: var(--ir_green);  }
+.ir_kpi_value.orange { color: var(--ir_orange); }
+
+.ir_kpi_badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ir_red);
+  background: #fee2e2;
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin-top: 4px;
+}
+
+/* ── Info box ───────────────────────────────────────────────── */
+.ir_info_box {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  font-size: 0.8rem;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.ir_info_accent {
+  width: 4px;
+  min-height: 36px;
+  border-radius: 4px;
+  background: #0f766e;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ir_info_box strong { color: var(--ir_red); }
+
+/* ── Main row ───────────────────────────────────────────────── */
+.ir_main_row {
+  display: flex;
+  gap: 14px;
+  align-items: stretch;
+}
+
+/* ── LEFT chart card ────────────────────────────────────────── */
+.ir_chart_card {
+  flex: 2 1 0;
+  min-width: 0;
+  background: var(--ir_card);
+  border-radius: var(--ir_radius);
+  border: 1px solid var(--ir_border);
+  padding: 18px 20px 14px;
+}
+
+.ir_chart_title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 14px;
+}
+
+/* ── Chart shell ────────────────────────────────────────────── */
+.ir_chart_shell {
+  display: flex;
+  gap: 0;
+  height: 300px;
+  align-items: stretch;
+  position: relative;
+}
+
+/* Y-axis left */
+.ir_y_wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex-shrink: 0;
+  padding-bottom: 26px;
+}
+
+.ir_y_label {
+  font-size: 0.6rem;
+  color: var(--ir_muted);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: center;
+  white-space: nowrap;
+  font-weight: 700;
+  width: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ir_y_ticks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 36px;
+  padding-right: 5px;
+  border-right: 1px solid var(--ir_border);
+}
+
+.ir_y_ticks span {
+  font-size: 0.6rem;
+  color: var(--ir_muted);
+  line-height: 1;
+}
+
+/* Chart area */
+.ir_chart_area {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+}
+
+/* Grid */
+.ir_grid {
+  position: absolute;
+  inset: 0 0 26px 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ir_grid span {
+  position: absolute;
+  left: 0; right: 0;
+  border-top: 1px solid #e7ebf1;
+}
+
+/* Bars container */
+.ir_bars {
+  position: absolute;
+  inset: 0 4px 26px;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  z-index: 2;
+}
+
+.ir_bar_group {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+}
+
+.ir_bar {
+  width: 100%;
+  border-radius: 3px 3px 0 0;
+  background: var(--ir_gray);
+  min-height: 2px;
+  position: relative;
+}
+
+.ir_bar_top_label {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.ir_bar_top_label.red {
+  color: #fff;
+  background: var(--ir_red);
+  border-radius: 3px;
+  padding: 1px 4px;
+}
+
+/* SVG overlay */
+.ir_svg {
+  position: absolute;
+  inset: 0 4px 26px;
+  width: calc(100% - 8px);
+  height: calc(100% - 26px);
+  overflow: visible;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* X-axis */
+.ir_xaxis {
+  position: absolute;
+  bottom: 0; left: 4px; right: 4px;
+  height: 26px;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 4px;
+}
+
+.ir_xaxis span {
+  flex: 1;
+  text-align: center;
+  font-size: 0.6rem;
+  color: var(--ir_muted);
+}
+
+/* Y-axis right */
+.ir_y_wrap_right {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex-shrink: 0;
+  padding-bottom: 26px;
+  border-left: 1px solid var(--ir_border);
+}
+
+.ir_y_ticks_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 28px;
+  padding-left: 5px;
+}
+
+.ir_y_ticks_right span {
+  display: block;
+  font-size: 0.6rem;
+  color: var(--ir_muted);
+  line-height: 1;
+}
+
+.ir_y_label_right {
+  font-size: 0.6rem;
+  color: var(--ir_muted);
+  writing-mode: vertical-rl;
+  text-align: center;
+  white-space: nowrap;
+  font-weight: 700;
+  width: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Tooltip ────────────────────────────────────────────────── */
+.ir_tooltip {
+  position: absolute;
+  background: #1e293b;
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 6px 10px;
+  border-radius: 7px;
+  pointer-events: none;
+  z-index: 20;
+  display: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+}
+
+/* ── Legend ─────────────────────────────────────────────────── */
+.ir_legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: 14px;
+  justify-content: center;
+  align-items: center;
+}
+
+.ir_legend_item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.ir_legend_sq {
+  width: 12px; height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.ir_legend_line {
+  width: 18px; height: 3px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.ir_legend_dashed {
+  width: 18px; height: 0;
+  border-top: 2px dashed #3b82f6;
+  flex-shrink: 0;
+}
+
+/* ── Health strip ───────────────────────────────────────────── */
+.ir_health_wrap {
+  margin-top: 14px;
+}
+
+.ir_health_track {
+  position: relative;
+}
+
+.ir_health_strip {
+  height: 10px;
+  border-radius: 5px;
+  background: linear-gradient(to right,
+    #16a34a  0%,
+    #4ade80 30%,
+    #facc15 50%,
+    #f97316 70%,
+    #dc2626 100%);
+}
+
+.ir_health_dot {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #d1d5db;
+  z-index: 2;
+}
+
+.ir_health_labels {
+  display: flex;
+  margin-top: 6px;
+  gap: 0;
+}
+
+.ir_health_labels span {
+  flex: 1;
+  font-size: 0.63rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--ir_muted);
+  white-space: nowrap;
+}
+
+.ir_health_labels span.hl_green  { color: var(--ir_green);  }
+.ir_health_labels span.hl_amber  { color: var(--ir_amber);  }
+.ir_health_labels span.hl_red    { color: var(--ir_red);    }
+
+/* ── RIGHT column ───────────────────────────────────────────── */
+.ir_right_col {
+  flex: 0 0 270px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ir_side_card {
+  background: var(--ir_card);
+  border-radius: var(--ir_radius);
+  border: 1px solid var(--ir_border);
+  padding: 16px 18px;
+  flex: 1;
+}
+
+.ir_side_title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+/* Dealer table */
+.ir_dealer_table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.ir_dealer_table thead th {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--ir_muted);
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  padding: 0 6px 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--ir_border);
+}
+
+.ir_dealer_table thead th:not(:first-child) { text-align: right; }
+
+.ir_dealer_table tbody tr {
+  border-bottom: 1px solid var(--ir_border);
+}
+
+.ir_dealer_table tbody tr:last-child { border-bottom: none; }
+
+.ir_dealer_table tbody td {
+  padding: 8px 6px;
+  color: #374151;
+}
+
+.ir_dealer_table tbody td:not(:first-child) { text-align: right; }
+
+.ir_dealer_table .td_name { font-weight: 600; }
+
+.ir_status_badge {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+.ir_status_badge.saludable  { background: #dcfce7; color: #15803d; }
+.ir_status_badge.moderado   { background: #fff3cd; color: #b45309; border: 1px solid #fcd34d; }
+.ir_status_badge.sobre      { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+
+/* status legend below table */
+.ir_status_legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--ir_border);
+}
+
+.ir_status_legend_item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: #374151;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--ir_border);
+}
+
+.ir_status_legend_item:last-child {
+  border-bottom: none;
+}
+
+.ir_sl_dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ir_sl_tri {
+  width: 0; height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid var(--ir_red);
+  flex-shrink: 0;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .ir_main_row { flex-direction: column; }
+  .ir_right_col { flex: 1 1 100%; }
+}
+
+@media (max-width: 768px) {
+  .view_block_ir { padding: 16px 14px; }
+  .ir_chart_shell { height: 200px; }
+}
+
+@media (max-width: 600px) {
+  .ir_kpi_row { flex-wrap: wrap; }
+  .ir_kpi_card { flex: 1 1 130px; }
+}
+
+@media (max-width: 480px) {
+  .ir_title { font-size: 1.3rem; }
+}
+
+/* ============================================================
+   TOOLBAR DE FILTROS GLOBALES (inv_toolbar)
+   ============================================================ */
+
+.inv_toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid var(--ir_border);
+  border-radius: var(--ir_radius);
+  padding: 14px 18px;
+  margin-bottom: 14px;
+}
+
+.inv_toolbar_title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.inv_toolbar_heading {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.inv_toolbar_date {
+  font-size: 0.8rem;
+  color: var(--ir_muted);
+  font-weight: 600;
+}
+
+.inv_toolbar_filters {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.inv_toolbar_item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 120px;
+}
+
+.inv_toolbar_lbl {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--ir_muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.inv_toolbar_select {
+  height: 36px;
+  padding: 0 10px;
+  border: 1.5px solid var(--ir_border);
+  border-radius: 9px;
+  background: #fff;
+  color: #374151;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  min-width: 110px;
+}
+
+.inv_toolbar_select:focus {
+  border-color: var(--ir_blue);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.inv_select_multi {
+  width: 170px;
+}
+
+.inv_btn_reset {
+  height: 36px;
+  width: 36px;
+  border: 1.5px solid var(--ir_border);
+  border-radius: 9px;
+  background: #fff;
+  color: #374151;
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.inv_btn_reset:hover {
+  background: rgba(220, 38, 38, 0.08);
+  border-color: var(--ir_red);
+  color: var(--ir_red);
+}
+
+/* ============================================================
+   UTILIDADES DIN�MICAS
+   ============================================================ */
+
+.inv_kpi_sub {
+  margin: 4px 0 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ir_muted);
+}
+
+.inv_chart_periodo {
+  margin-left: auto;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ir_muted);
+  white-space: nowrap;
+}
+
+.inv_estado_vacio {
+  padding: 16px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.inv_clickable {
+  cursor: pointer;
+}
+
+.ir_dealer_table tbody tr.inv_clickable:hover td {
+  background: var(--ir_bg);
+}
+
+.inv_var_green { color: var(--ir_green); }
+.inv_var_red   { color: var(--ir_red); }
+
+.ir_status_badge.bajo { background: #e2e8f0; color: #475569; border: 1px solid #cbd5e1; }
+.ir_status_badge.n_a  { background: #f1f5f9; color: #94a3b8; border: 1px solid #e2e8f0; }

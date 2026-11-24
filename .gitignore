@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Composer
+/vendor/
+
+# SASS cache
+.sass-cache
+
+# IDEs
+.idea/
+/.vscode/
+/*.swp
+
+# Env
+.env
+
+# Coverage
+coverage/
+
+# Dist
+/dist/config/.env
